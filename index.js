@@ -1,13 +1,24 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const pool = require("./db")
+const pool = require("./db");
+const path = require("path");
 // TODO: download nodemon (quality of life thing)
-const POST = 5002;
+const PORT = process.env.PORT || 5002;
+
+
+
 
 // middleware
 app.use(cors());
 app.use(express.json());
+// process.env.NODE_ENV returns "production" or undefined
+if (process.env.NODE_ENV === "production") {
+    //if it's in production mode
+    //server static content
+    app.use(express.static(path.join(__dirname, "client/build")));
+    //this code lets you display your react app on your node.js website port (ie 5002 instead of 3000) -- it runs the build folder which is basically an html copy of your react project
+}
 
 //ROUTES
 
@@ -66,9 +77,14 @@ app.post("/todos", async (req, res) => {
     }
 });
 
+// CATCH ALL METHOD!!!!!!!!! if subdomain is super random, redirect to homepage (index.html)
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
+
 
 // postgres set to listen on 5050
-app.listen(POST, () => {
-    console.log(`hosting on port ${POST} bru`);
+app.listen(PORT, () => {
+    console.log(`hosting on port ${PORT} bru`);
 });
 
