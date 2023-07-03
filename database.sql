@@ -1,4 +1,6 @@
-CREATE DATABASE pernstack;
+-- CREATE DATABASE pernstack;
+
+-- \c pernstack
 
 CREATE TABLE todo(
     id SERIAL PRIMARY KEY,
