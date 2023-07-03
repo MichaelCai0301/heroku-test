@@ -13,6 +13,7 @@ console.log(process.env.NODE_ENV);
 app.use(cors());
 app.use(express.json());
 // process.env.NODE_ENV returns "production" or undefined
+
 if (process.env.NODE_ENV === "production") {
     //if it's in production mode
     //server static content
