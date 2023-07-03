@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "build": "react-scripts build"
   },
   "author": "",
   "license": "ISC",
