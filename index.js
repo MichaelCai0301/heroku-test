@@ -7,7 +7,7 @@ const path = require("path");
 const PORT = process.env.PORT || 5002;
 
 
-
+console.log(process.env.NODE_ENV);
 
 // middleware
 app.use(cors());
@@ -16,6 +16,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
     //if it's in production mode
     //server static content
+    // console.log("hhhhhh");
     app.use(express.static(path.join(__dirname, "client/build")));
     //this code lets you display your react app on your node.js website port (ie 5002 instead of 3000) -- it runs the build folder which is basically an html copy of your react project
 }
