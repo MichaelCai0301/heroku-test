@@ -8,8 +8,7 @@
     "npm": "9.5.1"
   },
   "scripts": {
-    "test": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "test": "node index.js"
   },
   "author": "",
   "license": "ISC",
